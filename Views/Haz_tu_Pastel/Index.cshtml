@@ -28,7 +28,7 @@ form .page .field .label {
     position: absolute;
     top: -30px;
     font-weight: 500;
-    color:#00ff21;
+    color:#ff9595;
     font-size:20px;
 }
 form .page .field input {
@@ -55,7 +55,7 @@ form .page .field button {
     width: 100%;
     height: calc(100% + 5px);
     border: none;
-    background: var(--secondary);
+    background: #ff9090;
     margin-top: -20px;
     border-radius: 5px;
     color: #fff;
@@ -237,7 +237,7 @@ form .page .btns button.next {
                                         <img alt="Logo-White" src="~/assets/images/logo-150.png">
                                     </li>
                                     <li>
-                                        <a class="show-menu" href="javascript:void(0);">Themes</a>
+                                        <a href="@Url.Action("Index","Haz_tu_Pastel")">Haz tu Pastel</a>
                                     </li>
                                     <li>
                                         <a href="blog-center.html">Blog</a>
@@ -322,7 +322,7 @@ form .page .btns button.next {
                 </div>
                 <div class="tittle-sub-top pad-top-150">
                     <div class="container">
-                        Inicio /
+                       
                         <h1>
                             Haz tu Pastel
                         </h1>
@@ -340,7 +340,7 @@ form .page .btns button.next {
                     @* Haz tu pastel *@
 
                     <div class="container">
-                        <header>Haz tu pastel</header>
+                    
                         <div class="progress-bar">
                             <div class="step">
                                 <p>Datos</p>
@@ -403,7 +403,7 @@ form .page .btns button.next {
                                     </div>
 
                                     <div class="field">
-                                        <button class="firstNext next">Next</button>
+                                        <button class="firstNext next">Siguiente</button>
                                     </div>
                                 </div>
 
@@ -429,8 +429,8 @@ form .page .btns button.next {
                                         </label>
                                     </div>
                                     <div class="field btns">
-                                        <button class="prev-1 prev">Previous</button>
-                                        <button class="next-1 next">Next</button>
+                                        <button class="prev-1 prev">Anterior</button>
+                                        <button class="next-1 next">Siguiente</button>
                                     </div>
                                 </div>
                                 <div class="page">
@@ -455,12 +455,9 @@ form .page .btns button.next {
                                         </label>
                                     </div>
                                     <div class="field btns">
-                                        <button class="prev-1 prev">Previous</button>
-                                        <button class="next-1 next">Next</button>
-                                    </div>
-                                    <div class="field btns">
-                                        <button class="prev-2 prev">Previous</button>
-                                        <button class="next-2 next">Next</button>
+                                        <button class="prev-1 prev"> Anterior</button>
+
+                                        <button class="next-1 next">Siguiente</button>
                                     </div>
                                 </div>
                                
@@ -487,25 +484,27 @@ form .page .btns button.next {
                                         </label>
                                     </div>
                                     <div class="field btns">
-                                        <button class="prev-4 prev">Previous</button>
-                                        <button class="next-4 next">Next</button>
+                                        <button class="prev-4 prev">Anterior</button>
+                                        <button class="next-4 next">Siguiente</button>
                                     </div>
                                 </div>
 
                                 <div class="page">
                                     <div class="title">Sube tu foto y deja tus comentarios</div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                                        <label for="exampleFormControlTextarea1" class="form-label">Escribe tu comentario</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label">Sube tu foto de ejemplo</label>
+                                        <label for="formFile" class="form-label">Sube tu foto</label>
                                         <input class="form-control" type="file" id="formFile">
                                     </div>
                                     <div class="field btns">
-                                        <button class="prev-5 prev">Previous</button>
-                                        <button class="submit">Submit</button>
+                                        <button class="prev-5 prev">Anterior</button>
+                                        <button class="submit">Terminar</button>
+
+                                        
                                     </div>
                                 </div>
                             </form>
