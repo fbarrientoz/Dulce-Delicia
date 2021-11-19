@@ -22,10 +22,10 @@
                             <nav>
                                 <ul class="header-nav hidden-xs">
                                     <li>
-                                        <a href="index.html">Home</a>
+                                        <a href="@Url.Action("Index","Home")">Home</a>
                                     </li>
                                     <li>
-                                        <a href="shop.html">Shop</a>
+                                        <a href="@Url.Action("Index","Producto")">Shop</a>
                                     </li>
                                     <li class="pad-top-0i">
                                         <img alt="Logo-White" src="~/assets/images/logo-150.png">
@@ -137,7 +137,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="shop-back">
-                                <a href="shop.html">&lt;-- Continue Shopping</a>
+                                <a href="@Url.Action("Index","Producto")">&lt;-- Continue Shopping</a>
                             </div>
                             <div class="tittle-chart-cake">
                                 <h1 class="pink-color">
