@@ -185,6 +185,14 @@
     <Content Include="assets\fonts\lato-regular-webfont.svg" />
     <Content Include="assets\fonts\montserrat-bold-webfont.svg" />
     <Content Include="assets\fonts\moon_flower_bold-webfont.svg" />
+    <Content Include="assets\images\254991736_870755446957089_5815492367575753463_n.png" />
+    <Content Include="assets\images\255608261_486584665884402_163655834831500061_n.png" />
+    <Content Include="assets\images\256347120_930978604176882_8139687276965751691_n.png" />
+    <Content Include="assets\images\256742743_1731359683724540_3644648369949184650_n.png" />
+    <Content Include="assets\images\256800230_300299688766755_1736159090090834592_n.png" />
+    <Content Include="assets\images\257446352_257979753032871_2283476353033068314_n.png" />
+    <Content Include="assets\images\257977971_235416111871436_2071456519219469583_n.png" />
+    <Content Include="assets\images\258542014_196002799367221_8152778686309577334_n.png" />
     <Content Include="assets\images\404.png" />
     <Content Include="assets\images\about-1.png" />
     <Content Include="assets\images\about-2.png" />
