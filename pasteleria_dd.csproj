@@ -233,6 +233,9 @@
     <Content Include="assets\images\cakes-co1.jpg" />
     <Content Include="assets\images\cakes-co2.jpg" />
     <Content Include="assets\images\client.png" />
+    <Content Include="assets\images\Cupcake-Imagen-1.png" />
+    <Content Include="assets\images\Cupcake-Imagen-2.png" />
+    <Content Include="assets\images\Cupcake-Imagen-3.png" />
     <Content Include="assets\images\dn.png" />
     <Content Include="assets\images\dot-blue-1.png" />
     <Content Include="assets\images\dot-blue.png" />
@@ -258,6 +261,7 @@
     <Content Include="assets\images\gel-7.jpg" />
     <Content Include="assets\images\gel-8.jpg" />
     <Content Include="assets\images\gel-9.jpg" />
+    <Content Include="assets\images\Green Cupcake.png" />
     <Content Include="assets\images\ice-cream-cake.png" />
     <Content Include="assets\images\ice-cream.png" />
     <Content Include="assets\images\logo-100.png" />
