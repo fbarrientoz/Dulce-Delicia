@@ -232,6 +232,7 @@
     <Content Include="assets\images\cake-wed.png" />
     <Content Include="assets\images\cake-white-lg.png" />
     <Content Include="assets\images\cake-white.png" />
+    <Content Include="assets\images\Cakepop.png" />
     <Content Include="assets\images\cakes-co.jpg" />
     <Content Include="assets\images\cakes-co1.jpg" />
     <Content Include="assets\images\cakes-co2.jpg" />
@@ -271,12 +272,18 @@
     <Content Include="assets\images\Homero.png" />
     <Content Include="assets\images\ice-cream-cake.png" />
     <Content Include="assets\images\ice-cream.png" />
+    <Content Include="assets\images\JurassicWorld.png" />
+    <Content Include="assets\images\kekisbatman.png" />
     <Content Include="assets\images\logo-100.png" />
     <Content Include="assets\images\logo-150.png" />
     <Content Include="assets\images\logo-white.png" />
     <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\Magnu.png" />
     <Content Include="assets\images\Mariposa.png" />
     <Content Include="assets\images\messes.png" />
+    <Content Include="assets\images\MickyMouse.png" />
+    <Content Include="assets\images\MinnieMouse.png" />
+    <Content Include="assets\images\Pocoyo.png" />
     <Content Include="assets\images\price-blue.png" />
     <Content Include="assets\images\price-green.png" />
     <Content Include="assets\images\price-pink.png" />
