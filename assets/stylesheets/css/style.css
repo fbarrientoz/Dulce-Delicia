@@ -748,8 +748,8 @@ Table Of Content
     content: '';
     position: absolute;
     background-color: #ffffff;
-    width: 10px;
-    height: 10px;
+    /*width: 10px;
+    height: 10px;*/
     top: 20px;
     border-radius: 50px;
   }
@@ -781,8 +781,8 @@ Table Of Content
     content: '';
     position: absolute;
     background-color: #ffffff;
-    width: 10px;
-    height: 10px;
+   /* width: 10px;
+    height: 10px;*/
     top: 20px;
     border-radius: 50px;
   }
