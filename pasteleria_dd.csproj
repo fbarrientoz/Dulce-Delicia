@@ -269,6 +269,7 @@
     <Content Include="assets\images\gel-9.jpg" />
     <Content Include="assets\images\Green Cupcake.png" />
     <Content Include="assets\images\Hallowin.png" />
+    <Content Include="assets\images\hombre_nieve.png" />
     <Content Include="assets\images\Homero.png" />
     <Content Include="assets\images\ice-cream-cake.png" />
     <Content Include="assets\images\ice-cream.png" />
@@ -283,12 +284,15 @@
     <Content Include="assets\images\messes.png" />
     <Content Include="assets\images\MickyMouse.png" />
     <Content Include="assets\images\MinnieMouse.png" />
+    <Content Include="assets\images\papa_noel.png" />
     <Content Include="assets\images\Pocoyo.png" />
     <Content Include="assets\images\price-blue.png" />
     <Content Include="assets\images\price-green.png" />
     <Content Include="assets\images\price-pink.png" />
     <Content Include="assets\images\price-purple.png" />
     <Content Include="assets\images\quote.png" />
+    <Content Include="assets\images\reno_naranja.png" />
+    <Content Include="assets\images\reno_naranja1.png" />
     <Content Include="assets\images\Rosas.png" />
     <Content Include="assets\images\Rugrats.png" />
     <Content Include="assets\images\shop-cake1.jpg" />
