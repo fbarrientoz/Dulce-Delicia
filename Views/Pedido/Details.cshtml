@@ -1,0 +1,84 @@
+﻿@model pasteleria_dd.Models.Pedido
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tamanio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tamanio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sabor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sabor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Relleno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Relleno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+     
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+    
+        <dt>
+            @Html.DisplayNameFor(model => model.Datos_extra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datos_extra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo_electronico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo_electronico)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

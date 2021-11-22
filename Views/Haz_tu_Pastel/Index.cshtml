@@ -1,84 +1,98 @@
-﻿<style>
-   
-  .container .form-outer {
-    width: 100%;
-    overflow: hidden;
-}
-.container .form-outer form {
-    display: flex;
-    width: calc(100% * var(--stepNumber));
-}
-.form-outer form .page {
-    width: calc(100% / var(--stepNumber));
-    transition: margin-left 0.3s ease-in-out;
-}
-.form-outer form .page .title {
-    text-align: left;
-    font-size: 25px;
-    font-weight: 500;
-}
-.form-outer form .page .field {
-    width: var(--containerWidth);
-    height: 45px;
-    margin: 45px 0;
-    display: flex;
-    position: relative;
-}
-form .page .field .label {
-    position: absolute;
-    top: -30px;
-    font-weight: 500;
-    color:#ff9595;
-    font-size:20px;
-}
-form .page .field input {
-    box-sizing: border-box;
-    height: 100%;
-    width: 100%;
-    border: 1px solid var(--inputBorderColor);
-    border-radius: 5px;
-    padding-left: 15px;
-    margin: 0 1px;
-    font-size: 18px;
-    transition: border-color 150ms ease;
-}
-form .page .field input.invalid-input {
-    border-color: var(--errorColor);
-}
-form .page .field select {
-    width: 100%;
-    padding-left: 10px;
-    font-size: 17px;
-    font-weight: 500;
-}
-form .page .field button {
-    width: 100%;
-    height: calc(100% + 5px);
-    border: none;
-    background: #ff9090;
-    margin-top: -20px;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: 0.5s ease;
-}
-form .page .field button:hover {
-    background: #000;
-}
-form .page .btns button {
-    margin-top: -20px !important;
-}
-form .page .btns button.prev {
-    margin-right: 3px;
-    font-size: 17px;
-}
-form .page .btns button.next {
-    margin-left: 3px;
-}
+﻿@model pasteleria_dd.Models.Pedido
+<style>
+    .container .form-outer {
+        width: 100%;
+        overflow: hidden;
+    }
+
+        .container .form-outer form {
+            display: flex;
+            width: calc(100% * var(--stepNumber));
+        }
+
+    .form-outer form .page {
+        width: calc(100% / var(--stepNumber));
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+        .form-outer form .page .title {
+            text-align: left;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .form-outer form .page .field {
+            width: var(--containerWidth);
+            height: 45px;
+            margin: 45px 0;
+            display: flex;
+            position: relative;
+        }
+
+    form .page .field .label {
+        position: absolute;
+        top: -30px;
+        font-weight: 500;
+        color: #ff9595;
+        font-size: 20px;
+    }
+
+    form .page .field input {
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        border: 1px solid var(--inputBorderColor);
+        border-radius: 5px;
+        padding-left: 15px;
+        margin: 0 1px;
+        font-size: 18px;
+        transition: border-color 150ms ease;
+    }
+
+        form .page .field input.invalid-input {
+            border-color: var(--errorColor);
+        }
+
+    form .page .field select {
+        width: 100%;
+        padding-left: 10px;
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    form .page .field button {
+        width: 100%;
+        height: calc(100% + 5px);
+        border: none;
+        background: #ff9090;
+        margin-top: -20px;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: 0.5s ease;
+    }
+
+        form .page .field button:hover {
+            background: #000;
+        }
+
+    form .page .btns button {
+        margin-top: -20px !important;
+    }
+
+        form .page .btns button.prev {
+            margin-right: 3px;
+            font-size: 17px;
+        }
+
+        form .page .btns button.next {
+            margin-left: 3px;
+        }
+
     .container .progress-bar {
         display: flex !important;
         margin: 40px 0 !important;
@@ -86,728 +100,777 @@ form .page .btns button.next {
     }
 
 
-.container .progress-bar .step {
-    text-align: center;
-    width: 100%;
-    position: relative;
-}
-.container .progress-bar .step p {
-    font-weight: 500;
-    font-size: 18px;
-    color: #000;
-    margin-bottom: 8px;
-}
-.progress-bar .step .bullet {
-    height: 25px;
-    width: 25px;
-    border: 2px solid #000;
-    display: inline-block;
-    border-radius: 50%;
-    position: relative;
-    transition: 0.2s;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 25px;
-}
-.progress-bar .step .bullet.active {
-    border-color: var(--primary);
-    background: var(--primary);
-}
-.progress-bar .step .bullet span {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.progress-bar .step .bullet.active span {
-    display: none;
-}
-.progress-bar .step .bullet:before,
-.progress-bar .step .bullet:after {
-    position: absolute;
-    content: "";
-    bottom: 11px;
-    right: -51px;
-    height: 3px;
-    width: 44px;
-    background: #262626;
-}
-.progress-bar .step .bullet.active:after {
-    background: var(--primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    animation: animate 0.3s linear forwards;
-}
-@@keyframes animate {
-    100% {
-        transform: scaleX(1);
-    }
-}
-.progress-bar .step:last-child .bullet:before,
-.progress-bar .step:last-child .bullet:after {
-    display: none;
-}
-.progress-bar .step p.active {
-    color: var(--primary);
-    transition: 0.2s linear;
-}
-.progress-bar .step .check {
-    position: absolute;
-    left: 50%;
-    top: 70%;
-    font-size: 15px;
-    transform: translate(-50%, -50%);
-    display: none;
-}
-.progress-bar .step .check.active {
-    display: block;
-    color: #fff;
-}
+        .container .progress-bar .step {
+            text-align: center;
+            width: 100%;
+            position: relative;
+        }
 
-@@media screen and (max-width: 660px) {
-    :root {
-        --containerWidth: 400px;
-    }
-    .progress-bar .step p {
-        display: none;
-    }
-    .progress-bar .step .bullet::after,
-    .progress-bar .step .bullet::before {
-        display: none;
-    }
+            .container .progress-bar .step p {
+                font-weight: 500;
+                font-size: 18px;
+                color: #000;
+                margin-bottom: 8px;
+            }
+
     .progress-bar .step .bullet {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: 25px;
+        width: 25px;
+        border: 2px solid #000;
+        display: inline-block;
+        border-radius: 50%;
+        position: relative;
+        transition: 0.2s;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 25px;
     }
+
+        .progress-bar .step .bullet.active {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+
+        .progress-bar .step .bullet span {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .progress-bar .step .bullet.active span {
+            display: none;
+        }
+
+        .progress-bar .step .bullet:before,
+        .progress-bar .step .bullet:after {
+            position: absolute;
+            content: "";
+            bottom: 11px;
+            right: -51px;
+            height: 3px;
+            width: 44px;
+            background: #262626;
+        }
+
+        .progress-bar .step .bullet.active:after {
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: animate 0.3s linear forwards;
+        }
+
+    @@keyframes animate {
+        100% {
+            transform: scaleX(1);
+        }
+    }
+
+    .progress-bar .step:last-child .bullet:before,
+    .progress-bar .step:last-child .bullet:after {
+        display: none;
+    }
+
+    .progress-bar .step p.active {
+        color: var(--primary);
+        transition: 0.2s linear;
+    }
+
     .progress-bar .step .check {
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 70%;
         font-size: 15px;
         transform: translate(-50%, -50%);
         display: none;
     }
-    .step {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-@@media screen and (max-width: 490px) {
-    :root {
-        --containerWidth: 100%;
-    }
-    .container {
-        box-sizing: border-box;
-        border-radius: 0;
-    }
-}
 
+        .progress-bar .step .check.active {
+            display: block;
+            color: #fff;
+        }
+
+    @@media screen and (max-width: 660px) {
+        :root {
+            --containerWidth: 400px;
+        }
+
+        .progress-bar .step p {
+            display: none;
+        }
+
+        .progress-bar .step .bullet::after,
+        .progress-bar .step .bullet::before {
+            display: none;
+        }
+
+        .progress-bar .step .bullet {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-bar .step .check {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 15px;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    @@media screen and (max-width: 490px) {
+        :root {
+            --containerWidth: 100%;
+        }
+
+        .container {
+            box-sizing: border-box;
+            border-radius: 0;
+        }
+    }
 </style>
-<div class="ip-container" id="ip-container">
-    <!--initial header-->
-    <header class="ip-header">
-        <div class="ip-loader">
-            <svg class="ip-inner" height="60px" viewbox="0 0 80 80" width="60px"><path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path><path class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" id="ip-loader-circle"></path></svg>
-        </div>
-    </header>
-    <!--main content-->
-    <div class="ip-main">
-        <div class="top-highlight hide">
-            &nbsp;
-        </div>
-        <!-- Start Header Cake -->
-        <section class="header-wrapper">
-            <header class="wrap-header purple-top-dot">
-                <div class="top-absolute">
-                    <div class="top-header">
-                        <div class="container">
-                            <div class="navbar-header visible-xs">
-                                <button class="navbar-toggle toggle-cake show-menu"><span class="sr-only">Toggle Navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand navbar-cake" href="#"><img alt="Logo-White" src="~/assets/images/logo-100.png"></a>
-                            </div>
-                            <nav>
-                                <ul class="header-nav hidden-xs">
-                                    <li>
-                                        <a href="@Url.Action("Index","Home")">Inicio</a>
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Action("Index","Producto")">Galeria</a>
-                                    </li>
-                                    <li class="pad-top-0i">
-                                        <img alt="Logo-White" src="~/assets/images/dulces_delicias.png">
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Action("Index","Haz_tu_Pastel")">Haz tu Pastel</a>
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Action("Contact","Home")">Contacto</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <!-- Start Mega Menu Cake -->
-                            <div class="mega-menu hide">
-                                <div class="tittle-mega">
-                                    <h4>
-                                        - Mega Menu -
-                                    </h4>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <ul class="list-mega">
-                                                <li class="bottom-red-border">
-                                                    Blog
-                                                </li>
-                                                <li>
-                                                    <a href="blog.html">Blog Left Content</a>
-                                                </li>
-                                                <li>
-                                                    <a href="blog-right-content.html">Blog Right Content</a>
-                                                </li>
-                                                <li>
-                                                    <a href="blog-center.html">Blog Center</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="list-mega">
-                                                <li class="bottom-red-border">
-                                                    Gallery
-                                                </li>
-                                                <li>
-                                                    <a href="gallery.html">Gallery 3 Column</a>
-                                                </li>
-                                                <li>
-                                                    <a href="gallery-4-column.html">Gallery 4 Column</a>
-                                                </li>
-                                                <li>
-                                                    <a href="gallery-dot.html">Gallery With Text</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <ul class="list-mega">
-                                                <li class="bottom-red-border">
-                                                    OTHER PAGE
-                                                </li>
-                                                <li>
-                                                    <a href="chart-page.html">Chart Page</a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-page.html">Product Details</a>
-                                                </li>
-                                                <li>
-                                                    <a href="privacy-policy.html">Privacy Policy</a>
-                                                </li>
-                                                <li>
-                                                    <a href="terms-of-use.html">Terms Of Use</a>
-                                                </li>
-                                                <li>
-                                                    <a href="404.html">404</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="div text-center">
-                                        <button class="btn btn-pink-cake mar-top-20 close-menu">Close Themes</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Mega Menu Cake -->
-                        </div>
-                    </div>
-                    <div class="triangle">
-                        &nbsp;
-                    </div>
-                </div>
-                <div class="tittle-sub-top pad-top-150">
-                    <div class="container">
-                       
-                        <h1>
-                            Haz tu Pastel
-                        </h1>
-                        @*<h2>
-                                Cake
-                            </h2>*@
-                    </div>
-                </div>
-            </header>
-            <div class="purple-arrow">
+
+    <div class="ip-container" id="ip-container">
+        <!--initial header-->
+        <header class="ip-header">
+            <div class="ip-loader">
+                <svg class="ip-inner" height="60px" viewbox="0 0 80 80" width="60px"><path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path><path class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" id="ip-loader-circle"></path></svg>
+            </div>
+        </header>
+        <!--main content-->
+        <div class="ip-main">
+            <div class="top-highlight hide">
                 &nbsp;
             </div>
-            <div class="">
-                <div class="container">
-                    @* Haz tu pastel *@
-
-                    <div class="container">
-                    
-                        <div class="progress-bar">
-                            <div class="step">
-                                <p>Datos</p>
-                                <div class="bullet">
-                                    <span>1</span>
+            <!-- Start Header Cake -->
+            <section class="header-wrapper">
+                <header class="wrap-header purple-top-dot">
+                    <div class="top-absolute">
+                        <div class="top-header">
+                            <div class="container">
+                                <div class="navbar-header visible-xs">
+                                    <button class="navbar-toggle toggle-cake show-menu"><span class="sr-only">Toggle Navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand navbar-cake" href="#"><img alt="Logo-White" src="~/assets/images/logo-100.png"></a>
                                 </div>
-                                <div class="check fas fa-check"></div>
-                            </div>
-                            <div class="step">
-                                <p>Producto</p>
-                                <div class="bullet">
-                                    <span>2</span>
-                                </div>
-                                <div class="check fas fa-check"></div>
-                            </div>
-                            <div class="step">
-                                <p>Tamaño</p>
-                                <div class="bullet">
-                                    <span>3</span>
-                                </div>
-                                <div class="check fas fa-check"></div>
-                            </div>
-                            <div class="step">
-                                <p>Sabor</p>
-                                <div class="bullet">
-                                    <span>4</span>
-                                </div>
-                                <div class="check fas fa-check"></div>
-                            </div>
-                            <div class="step">
-                                <p>Relleno</p>
-                                <div class="bullet">
-                                    <span>5</span>
-                                </div>
-                                <div class="check fas fa-check"></div>
-                            </div>
-                            <div class="step">
-                                <p>Personaliza</p>
-                                <div class="bullet">
-                                    <span>6</span>
-                                </div>
-                                <div class="check fas fa-check"></div>
-                            </div>
-                            <div class="step">
-                                <p>Diseño</p>
-                                <div class="bullet">
-                                    <span>7</span>
-                                </div>
-                                <div class="check fas fa-check"></div>
-                            </div>
-                        </div>
-                        <div class="form-outer">
-                            <form action="#">
-                                <div class="page slide-page">
-                                    <div class="title">Información Básica</div>
-                                    <div class="field">
-                                        <div class="label">Nombre Completo</div>
-                                        <input type="text" required />
+                                <nav>
+                                    <ul class="header-nav hidden-xs">
+                                        <li>
+                                            <a href="@Url.Action("Index", "Home")">Inicio</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index", "Producto")">Galeria</a>
+                                        </li>
+                                        <li class="pad-top-0i">
+                                            <img alt="Logo-White" src="~/assets/images/dulces_delicias.png">
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index", "Haz_tu_Pastel")">Haz tu Pastel</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Contact", "Home")">Contacto</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- Start Mega Menu Cake -->
+                                <div class="mega-menu hide">
+                                    <div class="tittle-mega">
+                                        <h4>
+                                            - Mega Menu -
+                                        </h4>
                                     </div>
-                                    <div class="field">
-                                        <div class="label">Correo electrónico</div>
-                                        <input type="text" required />
-                                    </div>
-                                    <div class="field">
-                                        <div class="label">Teléfono</div>
-                                        <input type="Number" required />
-                                    </div>
-
-                                    <div class="field">
-                                        <button class="firstNext next">Siguiente</button>
-                                    </div>
-                                </div>
-
-                                <div class="page">
-                                    <div class="title">¿Qué producto desea?</div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Pastel
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Quequitos
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Magnum
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Cake-pop
-                                        </label>
-                                    </div>
-                                    <div class="field btns">
-                                        <button class="prev-1 prev">Anterior</button>
-                                        <button class="next-1 next">Siguiente</button>
-                                    </div>
-                                </div>
-
-                                <div class="page">
-                                    <div class="title">¿Para cuantas personas?</div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            6
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            10
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            12
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            15
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            20
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            30
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            45-50
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            60
-                                        </label>
-                                    </div>
-                                    <div class="field btns">
-                                        <button class="prev-1 prev">Anterior</button>
-                                        <button class="next-1 next">Siguiente</button>
-                                    </div>
-                                </div>
-                                <div class="page">
-                                    <div class="title">Sabor:</div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Fresa
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Chocolate
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Vainilla
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Zanahoria
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Vainilla y fresa
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Vainilla y chocolate
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Mixto: Fresa, vainilla, chocolate
-                                        </label>
-                                    </div>
-                                    <div class="field btns">
-                                        <button class="prev-1 prev"> Anterior</button>
-
-                                        <button class="next-1 next">Siguiente</button>
-                                    </div>
-                                </div>
-
-
-                                <div class="page">
-                                    <div class="title">Relleno:</div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Cajeta
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Cajeta con plátano
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Chocolate
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Chocolate con plátano
-                                        </label>
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Coctel de frutas
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Mermelada
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
-                                        <label class="form-check-label" for="flexRadioDefault3">
-                                            Plátano
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Queso crema
-                                        </label>
-                                    <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Sin relleno
-                                            </label>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <ul class="list-mega">
+                                                    <li class="bottom-red-border">
+                                                        Blog
+                                                    </li>
+                                                    <li>
+                                                        <a href="blog.html">Blog Left Content</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="blog-right-content.html">Blog Right Content</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="blog-center.html">Blog Center</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="list-mega">
+                                                    <li class="bottom-red-border">
+                                                        Gallery
+                                                    </li>
+                                                    <li>
+                                                        <a href="gallery.html">Gallery 3 Column</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="gallery-4-column.html">Gallery 4 Column</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="gallery-dot.html">Gallery With Text</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <ul class="list-mega">
+                                                    <li class="bottom-red-border">
+                                                        OTHER PAGE
+                                                    </li>
+                                                    <li>
+                                                        <a href="chart-page.html">Chart Page</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="product-details-page.html">Product Details</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="privacy-policy.html">Privacy Policy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="terms-of-use.html">Terms Of Use</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="404.html">404</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="div text-center">
+                                            <button class="btn btn-pink-cake mar-top-20 close-menu">Close Themes</button>
                                         </div>
                                     </div>
-                                    <div class="field btns">
-                                        <button class="prev-4 prev">Anterior</button>
-                                        <button class="next-4 next">Siguiente</button>
-                                    </div>
                                 </div>
-
-                                <div class="page">
-                                    <div class="title">Sube foto del diseño deseado y escribenos si deseas algo adicional o especificaciones especiales</div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Escribe tu comentario</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="formFile" class="form-label">Sube tu foto</label>
-                                        <input class="form-control" type="file" id="formFile">
-                                    </div>
-                                    <div class="field btns">
-                                        <button class="prev-5 prev">Anterior</button>
-                                        <button class="submit">Terminar</button>
-
-
-                                    </div>
-                                </div>
-                            </form>
+                                <!-- End Mega Menu Cake -->
+                            </div>
+                        </div>
+                        <div class="triangle">
+                            &nbsp;
                         </div>
                     </div>
+                    <div class="tittle-sub-top pad-top-150">
+                        <div class="container">
 
-
+                            <h1>
+                                Haz tu Pastel
+                            </h1>
+                            @*<h2>
+                                    Cake
+                                </h2>*@
+                        </div>
+                    </div>
+                </header>
+                <div class="purple-arrow">
+                    &nbsp;
                 </div>
+                <div class="">
+                    <div class="container">
+                        @* Haz tu pastel *@
+
+                        <div class="container">
+
+                            <div class="progress-bar">
+                                <div class="step">
+                                    <p>Datos</p>
+                                    <div class="bullet">
+                                        <span>1</span>
+                                    </div>
+                                    <div class="check fas fa-check"></div>
+                                </div>
+                                <div class="step">
+                                    <p>Producto</p>
+                                    <div class="bullet">
+                                        <span>2</span>
+                                    </div>
+                                    <div class="check fas fa-check"></div>
+                                </div>
+                                <div class="step">
+                                    <p>Tamaño</p>
+                                    <div class="bullet">
+                                        <span>3</span>
+                                    </div>
+                                    <div class="check fas fa-check"></div>
+                                </div>
+                                <div class="step">
+                                    <p>Sabor</p>
+                                    <div class="bullet">
+                                        <span>4</span>
+                                    </div>
+                                    <div class="check fas fa-check"></div>
+                                </div>
+                                <div class="step">
+                                    <p>Relleno</p>
+                                    <div class="bullet">
+                                        <span>5</span>
+                                    </div>
+                                    <div class="check fas fa-check"></div>
+                                </div>
+                                <div class="step">
+                                    <p>Personaliza</p>
+                                    <div class="bullet">
+                                        <span>6</span>
+                                    </div>
+                                    <div class="check fas fa-check"></div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-outer">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="page slide-page">
+                                        <div class="title">Información Básica</div>
+                                        <div class="field">
+                                            <div class="label">Nombre Completo</div>
+                                            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="field">
+                                            <div class="label">Correo electrónico</div>
+                                            @Html.EditorFor(model => model.correo_electronico, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.correo_electronico, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="field">
+                                            <div class="label">Teléfono</div>
+                                            @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="field">
+                                            <button class="firstNext next">Siguiente</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="page">
+                                        <div class="title">¿Qué producto desea?</div>
+                                        <div class="form-check">
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">*@
+                                            @Html.RadioButtonFor(model => model.Tamanio, "Pastel")@Html.Label("Pastel")
+                                            @*<label class="form-check-label" for="flexRadioDefault1">
+                                                Pastel
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "Quequitos")@Html.Label("Quequitos")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Quequitos
+                                            </label>*@
+                                        </div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "Magnum")@Html.Label("Magnum")
+
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Magnum
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "Cake-pop")@Html.Label("Cake-pop")
+
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Cake-pop
+                                            </label>*@
+                                        </div>
+                                        <div class="field btns">
+                                            <button class="prev-1 prev">Anterior</button>
+                                            <button class="next-1 next">Siguiente</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="page">
+                                        <div class="title">¿Para cuantas personas?</div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "6")@Html.Label("6")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                6
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "10")@Html.Label("10")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                        <label class="form-check-label" for="flexRadioDefault1">
+                                                            10
+                                                        </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "12")@Html.Label("12")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                12
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "15")@Html.Label("15")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                15
+                                            </label>*@
+                                        </div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "20")@Html.Label("20")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                20
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "30")@Html.Label("30")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    30
+                                                </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "45-50")@Html.Label("45-50")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                45-50
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Tamanio, "60")@Html.Label("60")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
+                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                        60
+                                                    </label>*@
+                                        </div>
+                                        <div class="field btns">
+                                            <button class="prev-1 prev">Anterior</button>
+                                            <button class="next-1 next">Siguiente</button>
+                                        </div>
+                                    </div>
+                                    <div class="page">
+                                        <div class="title">Sabor:</div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Sabor, "Fresa")@Html.Label("Fresa")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Fresa
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Sabor, "Chocolate")@Html.Label("Chocolate")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Chocolate
+                                            </label>*@
+                                        </div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Sabor, "Vainilla")@Html.Label("Vainilla")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Vainilla
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Sabor, "Zanahoria")@Html.Label("Zanahoria")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Zanahoria
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Sabor, "Vainilla y fresa")@Html.Label("Vainilla y fresa")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Vainilla y fresa
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Sabor, "Vainilla y chocolate")@Html.Label("Vainilla y chocolate")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Vainilla y chocolate
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Sabor, "Mixto: Fresa, vainilla, chocolate")@Html.Label("Mixto: Fresa, vainilla, chocolate")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Mixto: Fresa, vainilla, chocolate
+                                            </label>*@
+                                        </div>
+                                        <div class="field btns">
+                                            <button class="prev-1 prev"> Anterior</button>
+
+                                            <button class="next-1 next">Siguiente</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="page">
+                                        <div class="title">Relleno:</div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, "Cajeta")@Html.Label("Cajeta")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Cajeta
+                                            </label>*@
+                                        </div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, " Cajeta con plátano")@Html.Label(" Cajeta con plátano")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Cajeta con plátano
+                                            </label>*@
+                                        </div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, "Chocolate")@Html.Label("Chocolate")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                Chocolate
+                                            </label>*@
+                                        </div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, "Chocolate con plátano")@Html.Label("Chocolate con plátano")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Chocolate con plátano
+                                            </label>*@
+                                        </div>
+
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, "Coctel de frutas")@Html.Label("Coctel de frutas")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Coctel de frutas
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, "Mermelada")@Html.Label("Mermelada")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Mermelada
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, "Plátano")@Html.Label("Plátano")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
+                                            <label class="form-check-label" for="flexRadioDefault3">
+                                                Plátano
+                                            </label>*@
+                                        </div>
+                                        <div class="form-check">
+                                            @Html.RadioButtonFor(model => model.Relleno, " Queso crema")@Html.Label(" Queso crema")
+                                            @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Queso crema
+                                            </label>*@
+                                            <div class="form-check">
+                                                @Html.RadioButtonFor(model => model.Relleno, "Sin relleno")@Html.Label("Sin relleno")
+                                                @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9" checked>
+                                                <label class="form-check-label" for="flexRadioDefault3">
+                                                    Sin relleno
+                                                </label>*@
+                                            </div>
+                                        </div>
+                                        <div class="field btns">
+                                            <button class="prev-4 prev">Anterior</button>
+                                            <button class="next-4 next">Siguiente</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="page">
+                                        <div class="title">Sube foto del diseño deseado y escribenos si deseas algo adicional o especificaciones especiales</div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Escribe tu comentario</label>
+                                            @Html.EditorFor(model => model.Datos_extra, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Datos_extra, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Sube tu foto</label>
+                                            <input class="form-control" type="file" id="formFile">
+                                        </div>
+                                        <div class="field btns">
+                                            <button class="prev-5 prev">Anterior</button>
+                                            <input type="submit" value="Terminar" class="btn btn-default" />
+
+
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+            <!-- End Header Cake -->
+            <div class="green-arrow">
+                &nbsp;
             </div>
-        </section>
-        <!-- End Header Cake -->
-        <div class="green-arrow">
-            &nbsp;
-        </div>
-        <!-- Start More Cake -->
-        <section class="more-cake text-center">
-            <div class="container">
-                <img alt="Logo-White" class="mar-top-20" src="~/assets/images/cake-purple.png">
-                <p class="mar-top-20 mar-btm-20">
-                    La Felicidad&nbsp;<b>En Un Pequeño</b>&nbsp;Quequito.
-                </p>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="more-product">
-                            <img alt="More-Product" class="img-100" src="~/assets/images/Cupcake-Imagen-1.png">
-                        </div>
-                        <div class="detail-product">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h1 class="normal-heading green-color">
-                                        $75
-                                    </h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <b>Cupcake </b><i>Temático</i>
+            <!-- Start More Cake -->
+            <section class="more-cake text-center">
+                <div class="container">
+                    <img alt="Logo-White" class="mar-top-20" src="~/assets/images/cake-purple.png">
+                    <p class="mar-top-20 mar-btm-20">
+                        La Felicidad&nbsp;<b>En Un Pequeño</b>&nbsp;Quequito.
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="more-product">
+                                <img alt="More-Product" class="img-100" src="~/assets/images/Cupcake-Imagen-1.png">
+                            </div>
+                            <div class="detail-product">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h1 class="normal-heading green-color">
+                                            $75
+                                        </h1>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Cupcake </b><i>Temático</i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="more-product">
-                            <img alt="More-Product" class="img-100" src="~/assets/images/Cupcake-Imagen-2.png">
-                        </div>
-                        <div class="detail-product">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h1 class="normal-heading green-color">
-                                        $75
-                                    </h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <b>Cupcake </b><i>Con Imagen</i>
+                        <div class="col-sm-4">
+                            <div class="more-product">
+                                <img alt="More-Product" class="img-100" src="~/assets/images/Cupcake-Imagen-2.png">
+                            </div>
+                            <div class="detail-product">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h1 class="normal-heading green-color">
+                                            $75
+                                        </h1>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Cupcake </b><i>Con Imagen</i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="more-product">
-                            <img alt="More-Product" class="img-100" src="~/assets/images/Cupcake-Imagen-3.png">
-                        </div>
-                        <div class="detail-product">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h1 class="normal-heading green-color">
-                                        $65
-                                    </h1>
-                                </div>
-                                <div class="col-sm-6">
-                                    <b>Cupcake </b><i>Bonito y Sencillo</i>
+                        <div class="col-sm-4">
+                            <div class="more-product">
+                                <img alt="More-Product" class="img-100" src="~/assets/images/Cupcake-Imagen-3.png">
+                            </div>
+                            <div class="detail-product">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h1 class="normal-heading green-color">
+                                            $65
+                                        </h1>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>Cupcake </b><i>Bonito y Sencillo</i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
+            <!-- End More Cake -->
+            <div class="green-arrow">
+                &nbsp;
             </div>
-        </section>
-        <!-- End More Cake -->
-        <div class="green-arrow">
-            &nbsp;
-        </div>
-        <div class="pad-top-150"></div>
+            <div class="pad-top-150"></div>
 
+        </div>
     </div>
-</div>
 
 
 <script>
- initMultiStepForm();
+    initMultiStepForm();
 
-function initMultiStepForm() {
-    const progressNumber = document.querySelectorAll(".step").length;
-    const slidePage = document.querySelector(".slide-page");
-    const submitBtn = document.querySelector(".submit");
-    const progressText = document.querySelectorAll(".step p");
-    const progressCheck = document.querySelectorAll(".step .check");
-    const bullet = document.querySelectorAll(".step .bullet");
-    const pages = document.querySelectorAll(".page");
-    const nextButtons = document.querySelectorAll(".next");
-    const prevButtons = document.querySelectorAll(".prev");
-    const stepsNumber = pages.length;
+    function initMultiStepForm() {
+        const progressNumber = document.querySelectorAll(".step").length;
+        const slidePage = document.querySelector(".slide-page");
+        const submitBtn = document.querySelector(".submit");
+        const progressText = document.querySelectorAll(".step p");
+        const progressCheck = document.querySelectorAll(".step .check");
+        const bullet = document.querySelectorAll(".step .bullet");
+        const pages = document.querySelectorAll(".page");
+        const nextButtons = document.querySelectorAll(".next");
+        const prevButtons = document.querySelectorAll(".prev");
+        const stepsNumber = pages.length;
 
-    if (progressNumber !== stepsNumber) {
-        console.warn(
-            "Error, number of steps in progress bar do not match number of pages"
-        );
-    }
-
-    document.documentElement.style.setProperty("--stepNumber", stepsNumber);
-
-    let current = 1;
-
-    for (let i = 0; i < nextButtons.length; i++) {
-        nextButtons[i].addEventListener("click", function (event) {
-            event.preventDefault();
-
-            inputsValid = validateInputs(this);
-            // inputsValid = true;
-
-            if (inputsValid) {
-                slidePage.style.marginLeft = `-${
-                    (100 / stepsNumber) * current
-                }%`;
-                bullet[current - 1].classList.add("active");
-                progressCheck[current - 1].classList.add("active");
-                progressText[current - 1].classList.add("active");
-                current += 1;
-            }
-        });
-    }
-
-    for (let i = 0; i < prevButtons.length; i++) {
-        prevButtons[i].addEventListener("click", function (event) {
-            event.preventDefault();
-            slidePage.style.marginLeft = `-${
-                (100 / stepsNumber) * (current - 2)
-            }%`;
-            bullet[current - 2].classList.remove("active");
-            progressCheck[current - 2].classList.remove("active");
-            progressText[current - 2].classList.remove("active");
-            current -= 1;
-        });
-    }
-    submitBtn.addEventListener("click", function () {
-        bullet[current - 1].classList.add("active");
-        progressCheck[current - 1].classList.add("active");
-        progressText[current - 1].classList.add("active");
-        current += 1;
-        setTimeout(function () {
-            alert("Your Form Successfully Signed up");
-            location.reload();
-        }, 800);
-    });
-
-    function validateInputs(ths) {
-        let inputsValid = true;
-
-        const inputs =
-            ths.parentElement.parentElement.querySelectorAll("input");
-        for (let i = 0; i < inputs.length; i++) {
-            const valid = inputs[i].checkValidity();
-            if (!valid) {
-                inputsValid = false;
-                inputs[i].classList.add("invalid-input");
-            } else {
-                inputs[i].classList.remove("invalid-input");
-            }
+        if (progressNumber !== stepsNumber) {
+            console.warn(
+                "Error, number of steps in progress bar do not match number of pages"
+            );
         }
-        return inputsValid;
+
+        document.documentElement.style.setProperty("--stepNumber", stepsNumber);
+
+        let current = 1;
+
+        for (let i = 0; i < nextButtons.length; i++) {
+            nextButtons[i].addEventListener("click", function (event) {
+                event.preventDefault();
+
+                inputsValid = validateInputs(this);
+                // inputsValid = true;
+
+                if (inputsValid) {
+                    slidePage.style.marginLeft = `-${
+                        (100 / stepsNumber) * current
+                        }%`;
+                    bullet[current - 1].classList.add("active");
+                    progressCheck[current - 1].classList.add("active");
+                    progressText[current - 1].classList.add("active");
+                    current += 1;
+                }
+            });
+        }
+
+        for (let i = 0; i < prevButtons.length; i++) {
+            prevButtons[i].addEventListener("click", function (event) {
+                event.preventDefault();
+                slidePage.style.marginLeft = `-${
+                    (100 / stepsNumber) * (current - 2)
+                    }%`;
+                bullet[current - 2].classList.remove("active");
+                progressCheck[current - 2].classList.remove("active");
+                progressText[current - 2].classList.remove("active");
+                current -= 1;
+            });
+        }
+        submitBtn.addEventListener("click", function () {
+            bullet[current - 1].classList.add("active");
+            progressCheck[current - 1].classList.add("active");
+            progressText[current - 1].classList.add("active");
+            current += 1;
+            setTimeout(function () {
+                alert("Your Form Successfully Signed up");
+                location.reload();
+            }, 800);
+        });
+
+        function validateInputs(ths) {
+            let inputsValid = true;
+
+            const inputs =
+                ths.parentElement.parentElement.querySelectorAll("input");
+            for (let i = 0; i < inputs.length; i++) {
+                const valid = inputs[i].checkValidity();
+                if (!valid) {
+                    inputsValid = false;
+                    inputs[i].classList.add("invalid-input");
+                } else {
+                    inputs[i].classList.remove("invalid-input");
+                }
+            }
+            return inputsValid;
+        }
     }
-}
 
 </script>
