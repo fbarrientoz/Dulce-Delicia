@@ -1,6 +1,10 @@
 ﻿@model pasteleria_dd.Models.Pedido
 
 @{
+    Layout = "/Views/Shared/_Layout_Admin.cshtml";
+}
+
+@{
     ViewBag.Title = "Details";
 }
 
@@ -42,7 +46,7 @@
             @Html.DisplayFor(model => model.Foto)
         </dd>
 
-     
+
         <dt>
             @Html.DisplayNameFor(model => model.nombre)
         </dt>
@@ -59,7 +63,7 @@
             @Html.DisplayFor(model => model.telefono)
         </dd>
 
-    
+
         <dt>
             @Html.DisplayNameFor(model => model.Datos_extra)
         </dt>

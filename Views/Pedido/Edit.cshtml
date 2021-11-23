@@ -1,6 +1,10 @@
 ﻿@model pasteleria_dd.Models.Pedido
 
 @{
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
     ViewBag.Title = "Edit";
 }
 
@@ -10,7 +14,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Pedido</h4>
         <hr />
@@ -49,7 +53,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -67,7 +71,7 @@
             </div>
         </div>
 
-       
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Datos_extra, htmlAttributes: new { @class = "control-label col-md-2" })

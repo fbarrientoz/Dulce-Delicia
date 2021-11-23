@@ -1,6 +1,10 @@
 ﻿@model pasteleria_dd.Models.Pedido
 
 @{
+    Layout = "/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
     ViewBag.Title = "Delete";
 }
 
@@ -43,7 +47,7 @@
             @Html.DisplayFor(model => model.Foto)
         </dd>
 
-       
+
 
         <dt>
             @Html.DisplayNameFor(model => model.nombre)
@@ -81,7 +85,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
