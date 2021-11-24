@@ -21,10 +21,18 @@ namespace pasteleria_dd.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Id,Tamanio,Sabor,Relleno,Foto,nombre,telefono,Datos_extra,correo_electronico")] Pedido pedido)
+        public ActionResult Index([Bind(Include = "Id,Tamanio,Sabor,Relleno,Foto,nombre,telefono,Datos_extra,correo_electronico")] Pedido pedido, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null)
+                {
+                    string imageName = System.IO.Path.GetFileName(file.FileName);
+                    string PhysicalPath = Server.MapPath("~/Content/img/Pictograma/" + imageName);
+                    file.SaveAs(PhysicalPath);
+                    pedido.Foto = imageName;
+                }
+
                 db.Pedidos.Add(pedido);
                 db.SaveChanges();
                 return RedirectToAction("Index");

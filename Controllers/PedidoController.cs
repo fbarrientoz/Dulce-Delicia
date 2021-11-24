@@ -46,10 +46,17 @@ namespace pasteleria_dd.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Tamanio,Sabor,Relleno,Foto,estatus,nombre,telefono,direccion,fecha_solicitud,fecha_entrega,Datos_extra,correo_electronico")] Pedido pedido)
+        public ActionResult Create([Bind(Include = "Id,Tamanio,Sabor,Relleno,Foto,estatus,nombre,telefono,direccion,fecha_solicitud,fecha_entrega,Datos_extra,correo_electronico")] Pedido pedido, HttpPostedFileBase file )
         {
             if (ModelState.IsValid)
             {
+                if (file !=null)
+                { 
+                    string imageName = System.IO.Path.GetFileName(file.FileName);
+                    string PhysicalPath = Server.MapPath("~/Content/img/Pictograma/" + imageName);
+                    file.SaveAs(PhysicalPath);
+                    pedido.Foto = imageName;
+                }
                 db.Pedidos.Add(pedido);
                 db.SaveChanges();
                 return RedirectToAction("Index");
