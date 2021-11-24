@@ -51,11 +51,11 @@ namespace pasteleria_dd.Controllers
             if (ModelState.IsValid)
             {
                 if (file !=null)
-                { 
-                    string imageName = System.IO.Path.GetFileName(file.FileName);
-                    string PhysicalPath = Server.MapPath("~/Content/img/Pictograma/" + imageName);
-                    file.SaveAs(PhysicalPath);
-                    pedido.Foto = imageName;
+                {
+                    string ImageName = System.IO.Path.GetFileName(file.FileName);
+                    string physicalPath = Server.MapPath("~/Content/img/Producto/" + ImageName);
+                    file.SaveAs(physicalPath);
+                    pedido.Foto = ImageName;
                 }
                 db.Pedidos.Add(pedido);
                 db.SaveChanges();

@@ -420,7 +420,7 @@
                                 
                             </div>
                             <div class="form-outer">
-                                @using (Html.BeginForm())
+                                @using (Html.BeginForm("Index", "Haz_tu_Pastel", FormMethod.Post, new { enctype = "multipart/form-data" }))
                                 {
                                     @Html.AntiForgeryToken()
                                     <div class="page slide-page">
@@ -452,32 +452,32 @@
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">*@
                                             @Html.RadioButtonFor(model => model.Tamanio, "Pastel")@Html.Label("Pastel")
                                             @*<label class="form-check-label" for="flexRadioDefault1">
-                                                Pastel
-                                            </label>*@
+                        Pastel
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "Quequitos")@Html.Label("Quequitos")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Quequitos
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Quequitos
+                    </label>*@
                                         </div>
 
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "Magnum")@Html.Label("Magnum")
 
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Magnum
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Magnum
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "Cake-pop")@Html.Label("Cake-pop")
 
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Cake-pop
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Cake-pop
+                    </label>*@
                                         </div>
                                         <div class="field btns">
                                             <button class="prev-1 prev">Anterior</button>
@@ -490,59 +490,59 @@
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "6")@Html.Label("6")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                6
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        6
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "10")@Html.Label("10")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            10
-                                                        </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        10
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "12")@Html.Label("12")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                12
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        12
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "15")@Html.Label("15")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                15
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        15
+                    </label>*@
                                         </div>
 
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "20")@Html.Label("20")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                20
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        20
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "30")@Html.Label("30")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
-                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                    30
-                                                </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        30
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "45-50")@Html.Label("45-50")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                45-50
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        45-50
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Tamanio, "60")@Html.Label("60")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                        60
-                                                    </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        60
+                    </label>*@
                                         </div>
                                         <div class="field btns">
                                             <button class="prev-1 prev">Anterior</button>
@@ -554,52 +554,52 @@
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Sabor, "Fresa")@Html.Label("Fresa")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Fresa
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Fresa
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Sabor, "Chocolate")@Html.Label("Chocolate")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Chocolate
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Chocolate
+                    </label>*@
                                         </div>
 
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Sabor, "Vainilla")@Html.Label("Vainilla")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Vainilla
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Vainilla
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Sabor, "Zanahoria")@Html.Label("Zanahoria")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Zanahoria
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Zanahoria
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Sabor, "Vainilla y fresa")@Html.Label("Vainilla y fresa")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Vainilla y fresa
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Vainilla y fresa
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Sabor, "Vainilla y chocolate")@Html.Label("Vainilla y chocolate")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Vainilla y chocolate
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Vainilla y chocolate
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Sabor, "Mixto: Fresa, vainilla, chocolate")@Html.Label("Mixto: Fresa, vainilla, chocolate")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Mixto: Fresa, vainilla, chocolate
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Mixto: Fresa, vainilla, chocolate
+                    </label>*@
                                         </div>
                                         <div class="field btns">
                                             <button class="prev-1 prev"> Anterior</button>
@@ -615,68 +615,68 @@
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, "Cajeta")@Html.Label("Cajeta")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Cajeta
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Cajeta
+                    </label>*@
                                         </div>
 
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, " Cajeta con plátano")@Html.Label(" Cajeta con plátano")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Cajeta con plátano
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Cajeta con plátano
+                    </label>*@
                                         </div>
 
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, "Chocolate")@Html.Label("Chocolate")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                Chocolate
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Chocolate
+                    </label>*@
                                         </div>
 
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, "Chocolate con plátano")@Html.Label("Chocolate con plátano")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Chocolate con plátano
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Chocolate con plátano
+                    </label>*@
                                         </div>
 
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, "Coctel de frutas")@Html.Label("Coctel de frutas")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Coctel de frutas
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Coctel de frutas
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, "Mermelada")@Html.Label("Mermelada")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Mermelada
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Mermelada
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, "Plátano")@Html.Label("Plátano")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7" checked>
-                                            <label class="form-check-label" for="flexRadioDefault3">
-                                                Plátano
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Plátano
+                    </label>*@
                                         </div>
                                         <div class="form-check">
                                             @Html.RadioButtonFor(model => model.Relleno, " Queso crema")@Html.Label(" Queso crema")
                                             @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                Queso crema
-                                            </label>*@
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Queso crema
+                    </label>*@
                                             <div class="form-check">
                                                 @Html.RadioButtonFor(model => model.Relleno, "Sin relleno")@Html.Label("Sin relleno")
                                                 @*<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9" checked>
-                                                <label class="form-check-label" for="flexRadioDefault3">
-                                                    Sin relleno
-                                                </label>*@
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Sin relleno
+                        </label>*@
                                             </div>
                                         </div>
                                         <div class="field btns">
@@ -695,7 +695,7 @@
 
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Sube tu foto</label>
-                                            <input class="form-control" type="file" id="formFile">
+                                            <input class="form-control" type="file" name="file" id="file" style:"100%" />
                                         </div>
                                         <div class="field btns">
                                             <button class="prev-5 prev">Anterior</button>

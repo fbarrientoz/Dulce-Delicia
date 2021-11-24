@@ -43,7 +43,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Foto)
+            <div class="row">
+                <div class="col-md-6">
+                    <img src='@(System.Configuration.ConfigurationManager.AppSettings["URLPublica"] + "/Content/img/Producto/" + Model.Foto)' width="150" height="150" />
+                    <input type="file" name="file" id="file" style="width: 100%;" /> <br /><br />
+                </div>
+            </div>
         </dd>
 
 
